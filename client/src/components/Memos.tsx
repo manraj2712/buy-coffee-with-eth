@@ -9,7 +9,6 @@ const Memos = ({ state }: { state: State }) => {
   useEffect(() => {
     const memosMessage = async () => {
       const newMemos = await contract?.getMemos();
-      console.log(typeof newMemos[0].timestamp);
       setMemos(newMemos);
     };
     contract && memosMessage();
@@ -18,18 +17,24 @@ const Memos = ({ state }: { state: State }) => {
     <div>
       {memos.map((memo, index) => {
         return (
-          <>
-            <table>
-              <tbody>
-                <tr>
-                  <td>{memo.name}</td>
-                  <td>{memo.message}</td>
-                  <td>{String(memo.timestamp)}</td>
-                  <td>{memo.from}</td>
-                </tr>
-              </tbody>
-            </table>
-          </>
+          <div
+            style={{ borderWidth: "1px" }}
+            className="rounded-md border-gray-200 p-4 flex mt-5"
+          >
+            <img
+              className="object-cover w-10 h-10"
+              src="https://cdn.buymeacoffee.com/uploads/profile_pictures/default/FF813F/AF.png@200w_0e.webp"
+            ></img>
+            <p className="ml-3 align-middle my-auto">
+              <span className="font-bold text-black text-sm">
+                {memo.name}
+              </span>
+              <span className="font-normal text-gray-700">
+                {" "}
+                bought a coffee
+              </span>
+            </p>
+          </div>
         );
       })}
     </div>

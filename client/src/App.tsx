@@ -2,10 +2,8 @@ import abi from "./contract/Coffee.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import "./App.css";
-import Buy from "./components/Buy";
-import Memos from "./components/Memos";
 import { State, WindowWithEthereum } from "./types";
-import Hero from "./components/Hero";
+import Home from "./components/Home";
 
 function App() {
   const [state, setState] = useState<State>({
@@ -44,15 +42,7 @@ function App() {
     connectWallet();
   }, []);
   console.log(state);
-  return (
-    <>
-      <Hero imageUrl="https://cdn.buymeacoffee.com/uploads/cover_images/2021/09/03e03f39271bd786d700028c19b80f69.jpg@1950w_0e.webp" />
-      <h1 className="underline">Get Coffee !</h1>
-      <p className="underline text-xl first-letter:capitalize">tailwind test</p>
-      <Buy state={state} />
-      <Memos state={state} />
-    </>
-  );
+  return <Home state={state} />;
 }
 
 export default App;
