@@ -5,6 +5,7 @@ import "./App.css";
 import Buy from "./components/Buy";
 import Memos from "./components/Memos";
 import { State, WindowWithEthereum } from "./types";
+import Hero from "./components/Hero";
 
 function App() {
   const [state, setState] = useState<State>({
@@ -45,7 +46,9 @@ function App() {
   console.log(state);
   return (
     <>
-      <h1>Get Coffee !</h1>
+      <Hero imageUrl="https://cdn.buymeacoffee.com/uploads/cover_images/2021/09/03e03f39271bd786d700028c19b80f69.jpg@1950w_0e.webp" />
+      <h1 className="underline">Get Coffee !</h1>
+      <p className="underline text-xl first-letter:capitalize">tailwind test</p>
       <Buy state={state} />
       <Memos state={state} />
     </>
