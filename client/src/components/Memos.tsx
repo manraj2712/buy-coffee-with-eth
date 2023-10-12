@@ -20,6 +20,7 @@ const Memos = ({ state }: { state: State }) => {
           <div
             style={{ borderWidth: "1px" }}
             className="rounded-md border-gray-200 p-4 flex mt-5"
+            key={index}
           >
             <img
               className="object-cover w-10 h-10"

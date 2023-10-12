@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import { State } from "../types";
 import { ethers } from "ethers";
+import SelectCoffeeSize from "./SelectCoffeeSize";
 
 const Buy = ({ state }: { state: State }) => {
   const buyCoffee = async (e: FormEvent<HTMLFormElement>) => {
@@ -18,9 +19,12 @@ const Buy = ({ state }: { state: State }) => {
       style={{
         borderWidth: "1px",
       }}
-      className="p-6 rounded-md border-gray-200 md:w-1/3 h-min pb-10"
+      className="p-6 rounded-md border-gray-200 h-min pb-10"
     >
-      <p className="text-2xl font-bold">Buy Manraj Singh a Coffee ☕</p>
+      <p className="text-2xl font-bold">
+        Buy <span className="text-gray-500">Manraj Singh</span> a Coffee
+      </p>
+      <SelectCoffeeSize />
       <form onSubmit={buyCoffee}>
         <input
           style={{
