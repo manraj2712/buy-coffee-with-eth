@@ -7,8 +7,8 @@ const Description = () => {
       className="rounded-md border-gray-200 pb-4"
     >
       <img
-        className="h-80 w-full object-cover rounded-t-md"
-        src="/cover-image.png"
+        className="h-[420px] w-full object-cover rounded-t-md"
+        src="/cover-image-3.png"
       ></img>
       <div className="mt-5 px-4">
         <h1 className="text-3xl font-semibold mb-2">Support My Work</h1>
