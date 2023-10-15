@@ -1,19 +1,19 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
+import { State } from "../types";
+import toast from "react-hot-toast";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+const notify = () => toast.success('Successfully connected!',{
+  position: "bottom-center",
+  duration: 4000,
+});
+
+export default function Navbar({ state }: { state: State }) {
   return (
     <Disclosure as="nav" className="">
       {({ open }) => (
@@ -41,7 +41,7 @@ export default function Example() {
                   />
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex gap-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Profile dropdown */}
                 {/* <Menu as="div" className="relative ml-3">
                   <div>
@@ -107,14 +107,16 @@ export default function Example() {
                     </Menu.Items>
                   </Transition>
                 </Menu> */}
-
-                <button className="bg-white hover:bg-slate-200 text-black font-semibold py-2 px-4 rounded-full">
-                  Login
-                </button>
-
-                <button className="bg-yellow-400  text-black font-semibold py-2 px-4 rounded-full">
-                  Sign up
-                </button>
+                {!state.provider && !state.contract && !state.signer && (
+                  <button className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full">
+                    Connect Wallet
+                  </button>
+                )}
+                {state.provider && state.contract && state.signer && (
+                  <button onClick={notify} className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full">
+                    Wallet Connected
+                  </button>
+                )}
               </div>
             </div>
           </div>

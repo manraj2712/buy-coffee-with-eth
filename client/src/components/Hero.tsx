@@ -8,7 +8,7 @@ const Hero = ({ imageUrl }: { imageUrl: string }) => {
       <div className="rounded-full -mt-14 lg:-mt-28 h-28 w-28 lg:h-40 lg:w-40 mx-auto">
         <img
           className="object-cover rounded-full w-full h-full border-4 border-black"
-          src="https://cdn.buymeacoffee.com/uploads/profile_pictures/2021/10/ac7015e6f13636e13fb1db44bd92d1a8.jpg@300w_0e.webp"
+          src="/profile-avatar.jpeg"
         ></img>
       </div>
       <div className="px-4 text-center">

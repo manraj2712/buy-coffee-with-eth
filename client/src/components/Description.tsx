@@ -8,18 +8,65 @@ const Description = () => {
     >
       <img
         className="h-80 w-full object-cover rounded-t-md"
-        src="https://cdn.buymeacoffee.com/uploads/project_updates/2020/07/1f26344fe8cab6ee703def772f531bf7.jpg@1200w_0e.webp"
+        src="/cover-image.png"
       ></img>
-      <p className="mt-5 px-4">
-        Hallo, Servus, and welcome to this page! 👋 My name is Felicia (Feli)
-        and I'm a girl from Germany living in the US - in Cincinnati, Ohio to be
-        precise. I've decided to create this page for people who would like to
-        support my channel but are hesitant about becoming a patron on Patreon.
-        So if you want, you can buy me a "coffee" on here - which in my case
-        really means beer or Chai Latte haha because I don't actually drink
-        coffee. :) Thank you so much! I appreciate each and every one who
-        supports me and my channel.
-      </p>
+      <div className="mt-5 px-4">
+        <h1 className="text-3xl font-semibold mb-2">Support My Work</h1>
+        <p className="text-base mb-4">
+          Thank you for visiting my "Buy Me a Coffee" page! If you've enjoyed
+          the content, projects, or assistance I've provided, consider
+          supporting my work with a small contribution. Every coffee you buy me
+          helps keep the inspiration flowing and fuels more creative endeavors.
+        </p>
+
+        <p className="text-base mb-4">
+          Your support is a direct investment in the knowledge, tools, and
+          resources that allow me to continue offering valuable content and
+          assistance. Whether you're an avid reader, a fellow creator, or
+          someone who just appreciates what I do, your contribution means the
+          world to me.
+        </p>
+
+        <h2 className="text-xl font-semibold mb-2">Why Buy Me a Coffee?</h2>
+        <ul className="list-disc list-inside mb-4">
+          <li>
+            It helps me dedicate more time to creating high-quality content.
+          </li>
+          <li>It ensures that I can maintain and upgrade the tools I use.</li>
+          <li>It shows your appreciation and motivates me to keep going.</li>
+        </ul>
+
+        <p className="text-base mb-4">
+          Your support is entirely optional, and I genuinely appreciate every
+          coffee you choose to share. Thank you for being a part of my creative
+          journey!
+        </p>
+
+        <h2 className="text-xl font-semibold mb-2">How It Works</h2>
+        <ol className="list-decimal list-inside mb-4">
+          <li>Click the "Buy Me a Coffee" button.</li>
+          <li>Choose the number of coffees you'd like to buy.</li>
+          <li>Follow the simple steps to make your contribution.</li>
+        </ol>
+
+        <p className="text-base mb-4">
+          Your support is greatly valued and goes a long way in fueling future
+          projects and content. Thank you for being a part of this creative
+          community.
+        </p>
+
+        <h2 className="text-xl font-semibold mb-2">What's in it for You?</h2>
+        <p className="text-base mb-4">
+          While your support is an act of kindness, I also want to show my
+          appreciation. For every coffee you buy, you'll receive a warm, virtual
+          "Thank You" from me. Plus, you'll be helping me create more content,
+          tutorials, and resources for you and others to enjoy.
+        </p>
+
+        <p className="text-base">
+          Thank you for your support and encouragement. It means a lot!
+        </p>
+      </div>
     </div>
   );
 };

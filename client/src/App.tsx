@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import "./App.css";
 import { State, WindowWithEthereum } from "./types";
 import Home from "./components/Home";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [state, setState] = useState<State>({
@@ -42,7 +43,13 @@ function App() {
     connectWallet();
   }, []);
   console.log(state);
-  return <Home state={state} />;
+  return (
+    <>
+      {" "}
+      <Home state={state} />
+      <Toaster />
+    </>
+  );
 }
 
 export default App;

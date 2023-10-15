@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SelectCoffeeSize = () => {
+const SelectCoffeeSize = ({onSizeChange} : {onSizeChange: (size:number)=>void}) => {
   const [selectedSize, setSelectedSize] = useState(1);
   return (
     <div
@@ -14,7 +14,10 @@ const SelectCoffeeSize = () => {
           key={size}
           size={size}
           isSelected={selectedSize === size}
-          onClick={() => setSelectedSize(size)}
+          onClick={() => {
+            setSelectedSize(size);
+            onSizeChange(size);
+          }}
         />
       ))}
     </div>
