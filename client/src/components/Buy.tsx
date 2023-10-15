@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { State } from "../types";
+import { State, WindowWithEthereum } from "../types";
 import { ethers } from "ethers";
 import SelectCoffeeSize from "./SelectCoffeeSize";
 import toast from "react-hot-toast";
@@ -18,13 +18,22 @@ const executeTransaction = async (
     return false;
   }
 };
+
 const Buy = ({ state }: { state: State }) => {
+  const { ethereum } = window as WindowWithEthereum;
   const buyCoffee = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { contract } = state;
     const name = document.querySelector<HTMLInputElement>("#name")?.value;
     const message = document.querySelector<HTMLInputElement>("#message")?.value;
     const amount = { value: ethers.parseEther(`${size * 0.001}`) };
+
+    if (ethereum?.chainId !== "0xaa36a7") {
+      return toast.error("Please connect to the Sepolia network", {
+        position: "bottom-center",
+        duration: 4000,
+      });
+    }
 
     if (!name || !message)
       return toast.error("Please fill in all the fields", {
@@ -54,6 +63,7 @@ const Buy = ({ state }: { state: State }) => {
   const [size, setSize] = useState(1);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+
   return (
     <div
       style={{
@@ -89,9 +99,19 @@ const Buy = ({ state }: { state: State }) => {
         />
         <button
           type="submit"
-          className="mt-6 w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-4 px-4 rounded-full"
+          className="mt-6 w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-4 px-4 rounded-full disabled:bg-gray-100 disabled:text-gray-400"
+          disabled={
+            (!state.contract && !state.signer && !state.provider) ||
+            ethereum?.chainId !== "0xaa36a7"
+          }
         >
-          {`Support ${size * 0.001} ETH`}
+          {`${
+            !state.contract && !state.signer && !state.provider
+              ? "Connect to MetaMask"
+              : ethereum?.chainId !== "0xaa36a7"
+              ? "Connect to Sepolia Chain"
+              : `Support ${size * 0.001} ETH`
+          } `}
         </button>
       </form>
     </div>

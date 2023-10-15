@@ -1,17 +1,55 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { State } from "../types";
 import toast from "react-hot-toast";
+
+import { State, WindowWithEthereum } from "../types";
+import abi from "../contract/Coffee.json";
+import { ethers } from "ethers";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const notify = () => toast.success('Successfully connected!',{
-  position: "bottom-center",
-  duration: 4000,
-});
+const notify = () =>
+  toast.success("Successfully connected!", {
+    position: "bottom-center",
+    duration: 4000,
+  });
+
+const connectWallet = async () => {
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
+  const contractABI = abi.abi;
+
+  try {
+    const { ethereum } = window as WindowWithEthereum;
+
+    if (ethereum) {
+      const account = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const provider = new ethers.BrowserProvider(ethereum);
+      const signer = await provider.getSigner();
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+
+      window.location.reload();
+    } else {
+      toast.error("Please install MetaMask!", {
+        position: "bottom-center",
+        duration: 4000,
+      });
+    }
+  } catch (error) {
+    toast.error("Something went wrong!", {
+      position: "bottom-center",
+      duration: 4000,
+    });
+  }
+};
 
 export default function Navbar({ state }: { state: State }) {
   return (
@@ -108,12 +146,18 @@ export default function Navbar({ state }: { state: State }) {
                   </Transition>
                 </Menu> */}
                 {!state.provider && !state.contract && !state.signer && (
-                  <button className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full">
+                  <button
+                    onClick={connectWallet}
+                    className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full"
+                  >
                     Connect Wallet
                   </button>
                 )}
                 {state.provider && state.contract && state.signer && (
-                  <button onClick={notify} className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full">
+                  <button
+                    onClick={notify}
+                    className="hidden sm:flex bg-yellow-400  text-white font-semibold py-2 px-4 rounded-full"
+                  >
                     Wallet Connected
                   </button>
                 )}
