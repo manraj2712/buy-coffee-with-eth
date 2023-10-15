@@ -32,17 +32,23 @@ const Buy = ({ state }: { state: State }) => {
         duration: 4000,
       });
 
-    toast.promise(
-      executeTransaction(contract, amount, name!, message!),
-      {
-        loading: "Transaction in progress..",
-        success: "Successfully bought a coffee!",
-        error: "Error buying a coffee!",
-      },
-      {
-        position: "bottom-center",
-      }
-    );
+    toast
+      .promise(
+        executeTransaction(contract, amount, name!, message!),
+        {
+          loading: "Transaction in progress..",
+          success: "Successfully bought a coffee!",
+          error: "Error buying a coffee!",
+        },
+        {
+          position: "bottom-center",
+        }
+      )
+      .then(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      });
   };
 
   const [size, setSize] = useState(1);
