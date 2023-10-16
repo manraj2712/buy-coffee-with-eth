@@ -1,10 +1,10 @@
-import { Memo, State } from "../types";
-import { useState, useEffect } from "react";
+import StateContext from "../context/StateContext";
+import { Memo } from "../types";
+import { useState, useEffect, useContext } from "react";
 
-const Memos = ({ state }: { state: State }) => {
+const Memos = () => {
   const [memos, setMemos] = useState<Memo[]>([]);
-
-  const { contract } = state;
+  const { contract } = useContext(StateContext);
 
   useEffect(() => {
     const memosMessage = async () => {

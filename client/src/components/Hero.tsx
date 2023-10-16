@@ -1,13 +1,13 @@
 const Hero = ({ imageUrl }: { imageUrl: string }) => {
   return (
-    <div className="z-0">
+    <div>
       <img
-        className="object-cover px-3 h-[calc(100vw/3)]  lg:h-[calc(100vw/5.8)] w-full py-2"
+        className="object-cover px-3 h-[calc(100vw/3)]  md:h-[calc(100vw/5.8)] w-full py-2 z-0"
         src={imageUrl}
       ></img>
-      <div className="rounded-full -mt-14 lg:-mt-28 h-28 w-28 lg:h-40 lg:w-40 mx-auto">
+      <div className="relative rounded-full -mt-14 lg:-mt-28 h-24 w-24 lg:h-44 lg:w-44 mx-auto border-4 lg:border-8 border-white z-10">
         <img
-          className="object-cover rounded-full w-full h-full border-4 border-black"
+          className="object-cover rounded-full w-full h-full"
           src="/profile-avatar.jpeg"
         ></img>
       </div>
