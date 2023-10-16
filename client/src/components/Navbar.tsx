@@ -1,5 +1,4 @@
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
 import { WindowWithEthereum } from "../types";
@@ -49,7 +48,7 @@ export default function Navbar() {
   const state = useContext(StateContext);
   return (
     <Disclosure as="nav" className="">
-      {({ open }) => (
+      
         <>
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
@@ -125,7 +124,6 @@ export default function Navbar() {
             </div>
           </div>
         </>
-      )}
     </Disclosure>
   );
 }
