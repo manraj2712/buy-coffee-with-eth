@@ -1,8 +1,9 @@
-import { FormEvent, useState } from "react";
-import { State, WindowWithEthereum } from "../types";
+import { FormEvent, useContext, useState } from "react";
+import { WindowWithEthereum } from "../types";
 import { ethers } from "ethers";
 import SelectCoffeeSize from "./SelectCoffeeSize";
 import toast from "react-hot-toast";
+import StateContext from "../context/StateContext";
 
 const executeTransaction = async (
   contract: any,
@@ -19,7 +20,8 @@ const executeTransaction = async (
   }
 };
 
-const Buy = ({ state }: { state: State }) => {
+const Buy = () => {
+  const state = useContext(StateContext);
   const { ethereum } = window as WindowWithEthereum;
   const buyCoffee = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,7 +47,7 @@ const Buy = ({ state }: { state: State }) => {
       .promise(
         executeTransaction(contract, amount, name!, message!),
         {
-          loading: "Transaction in progress..",
+          loading: "Transaction under process..",
           success: "Successfully bought a coffee!",
           error: "Error buying a coffee!",
         },

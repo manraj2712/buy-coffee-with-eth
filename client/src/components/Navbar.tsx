@@ -1,15 +1,12 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
-import { State, WindowWithEthereum } from "../types";
+import { WindowWithEthereum } from "../types";
 import abi from "../contract/Coffee.json";
 import { ethers } from "ethers";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useContext } from "react";
+import StateContext from "../context/StateContext";
 
 const notify = () =>
   toast.success("Successfully connected!", {
@@ -25,16 +22,13 @@ const connectWallet = async () => {
     const { ethereum } = window as WindowWithEthereum;
 
     if (ethereum) {
-      const account = await ethereum.request({
+      await ethereum.request({
         method: "eth_requestAccounts",
       });
+
       const provider = new ethers.BrowserProvider(ethereum);
       const signer = await provider.getSigner();
-      const contract = new ethers.Contract(
-        contractAddress,
-        contractABI,
-        signer
-      );
+      new ethers.Contract(contractAddress, contractABI, signer);
 
       window.location.reload();
     } else {
@@ -51,7 +45,8 @@ const connectWallet = async () => {
   }
 };
 
-export default function Navbar({ state }: { state: State }) {
+export default function Navbar() {
+  const state = useContext(StateContext);
   return (
     <Disclosure as="nav" className="">
       {({ open }) => (

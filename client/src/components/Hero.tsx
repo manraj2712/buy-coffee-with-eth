@@ -2,7 +2,7 @@ const Hero = ({ imageUrl }: { imageUrl: string }) => {
   return (
     <div className="z-0">
       <img
-        className="object-cover px-3 h-[calc(100vw/5.8)] w-full py-2"
+        className="object-cover px-3 h-[calc(100vw/3)]  lg:h-[calc(100vw/5.8)] w-full py-2"
         src={imageUrl}
       ></img>
       <div className="rounded-full -mt-14 lg:-mt-28 h-28 w-28 lg:h-40 lg:w-40 mx-auto">
