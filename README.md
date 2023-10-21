@@ -2,7 +2,8 @@
 
 The Buy Me a Coffee decentralized application (dApp) is a solution for receiving cryptocurrency donations in a decentralized and transparent manner.
 
-![](https://github.com/manraj2712/buy-coffee-with-eth/assets/65106261/4d39fba2-8cfb-41e6-b34e-8ef020044406)
+![Preview](https://github.com/manraj2712/buy-coffee-with-eth/assets/65106261/6fbfd20e-0f0c-41fd-96c8-d294768899fd)
+
 
 ## Technologies Used
 
