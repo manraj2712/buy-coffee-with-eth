@@ -67,7 +67,7 @@ const Home = () => {
     <StateContext.Provider value={state}>
       <Navbar  />
       <div className="mb-10">
-        <Hero imageUrl="/banner.png" />
+        <Hero imageUrl="/banner-2.png" />
         <div className="max-w-[1800px] mr-auto ml-auto">
           <div className="lg:flex px-5 md:px-20 gap-6 mt-16">
             <div className="lg:w-1/3 mb-5 lg:mb-0">

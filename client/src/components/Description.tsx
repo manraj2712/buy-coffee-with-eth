@@ -8,7 +8,7 @@ const Description = () => {
     >
       <img
         className="h-[420px] w-full object-cover rounded-t-md"
-        src="/cover-image-3.png"
+        src="/cover-image-4.png"
       ></img>
       <div className="mt-5 px-4">
         <h1 className="text-3xl font-semibold mb-2">Support My Work</h1>
